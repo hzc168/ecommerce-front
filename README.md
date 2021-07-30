@@ -349,3 +349,55 @@ const Shop = () => {
 
 export default Shop
 ```
+
+### 8. 登录注册及首页
+
+添加 Ant Design：`npm i antd -S`
+
+#### 8.1 创建导航菜单
+
+新建`Navigation.tsx`，引入antd的Menu，并自定义selectable。
+
+#### 8.2 创建页头
+
+使用antd中的PageHeader，并加入相关样式
+
+#### 8.3 构建注册和登录表单
+
+创建组件`Signin.tsx`、`Signup.tsx`分别为登录和注册组件，分别在导航和路由中添加，并引入表单组件。
+
+#### 8.4 实现注册的Redux
+
+新建sagas，添加注册相关的redux
+
+#### 8.5 处理注册结果
+
+1. 注册成功 清空列表
+2. 注册成功 显示成功的提示信息
+3. 注册失败 显示失败的提示信息
+4. 离开页面之前 重置状态
+
+获取注册结果 auth
+
+使用 useEffect 监听 auth 结果
+
+
+
+#### 8.6 重置注册状态
+
+新建resetSignup的action以及reducer
+
+使用useEffect，在离开页面之前重置状态
+
+使用 composeWithDevTools 查看页面中的状态，可以在浏览器控制台的redux中看到注册是的store状态。
+
+
+
+#### 8.7 实现登录功能
+
+1. 实现登录的action，定义登录的常量，以及action接口类型，定义登录 登录成功和登录失败的action creator。
+
+2. reducer中，新增signin判断
+3. 使用saga接收action，处理登录请求
+4. saga中使用接口，登录成功之后，把登录信息存储在localStorage中
+5. 在signin组件中使用登录

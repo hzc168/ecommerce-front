@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { PageHeader } from '_antd@4.16.8@antd'
+import { PageHeader } from 'antd'
 import Navigator from './Navigation'
 
 interface Props {
