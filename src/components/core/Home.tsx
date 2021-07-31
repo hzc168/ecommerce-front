@@ -1,13 +1,50 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Layout from './Layout'
-import { useSelector } from 'react-redux'
+import Search from './Search'
+import { Col, Row, Typography } from 'antd'
+import ProductItem from './ProductItem'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProduct } from '../../store/actions/product.actions'
+import { AppState } from '../../store/reducers'
+import { ProductState } from '../../store/reducers/product.reducer'
+
+const { Title } = Typography
 
 const Home = () => {
-    const state = useSelector(state => state)
+    const dispatch = useDispatch()
+
+    const { createdAt, sold } = useSelector<AppState, ProductState>(state => state.product)
+
+    console.log("createdAt:----------", createdAt)
+
+    useEffect(() => {
+        dispatch(getProduct("createdAt"))
+        dispatch(getProduct("sold"))
+    }, [])
+
     return (
         <Layout title="首页" subTitle="尽情挑选">
-            Home
-            {JSON.stringify(state)}
+            <Search />
+            <Title level={5}>最新上架</Title>
+            <Row gutter={[16, 16]}>
+                {
+                    createdAt.products.map(item => (
+                        <Col span="6" key={item._id}>
+                            <ProductItem product={item} />
+                        </Col>
+                    ))
+                }
+            </Row>
+            <Title level={5}>最受欢迎</Title>
+            <Row gutter={[16, 16]}>
+                {
+                    sold.products.map(item => (
+                        <Col span="6" key={item._id}>
+                            <ProductItem product={item} />
+                        </Col>
+                    ))
+                }
+            </Row>
         </Layout>
     )
 }

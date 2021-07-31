@@ -42,7 +42,7 @@ const AddProduct = () => {
         //     shipping: formData.get('shipping'),
         //     photo: formData.get('photo')
         // }
-        axios.post(`${API}/reset/product`, formData, {
+        axios.post(`${API}/reset/products`, formData, {
         // axios.post(`http://localhost:80/product/create/1234`, formData, {
             headers: {
                 'Authorization': `Bearer ${token}`
