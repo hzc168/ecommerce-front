@@ -9,7 +9,7 @@ function* handleSignup(action: SignupAction) {
         yield axios.post(`${API}/reset/sign`, action.payload)
         yield put(signupSuccess())
     } catch (e) {
-        yield put(signupFail(e.response.data.error))
+        yield put(signupFail(e.response.data.message))
     }
 }
 
@@ -20,7 +20,7 @@ function* handleSignin(action: SigninAction): any {
         localStorage.setItem('jwt', JSON.stringify(response.data))
         yield put(signinSuccess())
     } catch (e) {
-        yield put(signinFail(e.response.data.error))
+        yield put(signinFail(e.response.data.message))
     }
 }
 

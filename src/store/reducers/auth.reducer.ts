@@ -61,6 +61,14 @@ export default function authReducer(state = intialState, action: AuthUnionType) 
                     message: ""
                 }
             }
+        case SIGNIN:
+            return {
+                ...state,
+                signin: {
+                    loaded: false,
+                    success: false
+                }
+            }
         case SIGNIN_SUCCESS:
             return {
                 ...state,
