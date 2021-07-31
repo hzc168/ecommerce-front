@@ -6,7 +6,7 @@ import { API } from '../../config'
 function* handleSignup(action: SignupAction) {
     try {
         console.log('提交注册数据', action.payload)
-        yield axios.post(`${API}/sign`, action.payload)
+        yield axios.post(`${API}/reset/sign`, action.payload)
         yield put(signupSuccess())
     } catch (e) {
         yield put(signupFail(e.response.data.error))
