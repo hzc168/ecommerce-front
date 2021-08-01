@@ -5,6 +5,9 @@ import { FC } from 'react'
 import { Product } from '../../store/models/product'
 import { API } from '../../config'
 import moment from 'moment'
+import { addItem } from '../../helpers/cart'
+import {useDispatch} from 'react-redux'
+import { push } from 'connected-react-router'
 
 const { Title, Paragraph } = Typography
 
@@ -15,6 +18,14 @@ interface Props {
 }
 
 const ProductItem: FC<Props> = ({ product, showViewProduct = true, showCartBtn = true }) => {
+
+    const dispatch = useDispatch()
+
+    const addToCart = () => {
+        addItem(product, () => {
+            dispatch(push('/cart'))
+        })
+    }
 
     const showButtons = () => {
         let buttonArray = []
@@ -27,8 +38,8 @@ const ProductItem: FC<Props> = ({ product, showViewProduct = true, showCartBtn =
         }
         if (showCartBtn) {
             buttonArray.push(
-                <Button type="link">
-                    <Link to="">加入购物车</Link>
+                <Button type="link" onClick={addToCart}>
+                    加入购物车
                 </Button>
             )
         }
