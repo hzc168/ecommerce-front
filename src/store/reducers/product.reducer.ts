@@ -1,4 +1,4 @@
-import { FILTER_PRODUCT, FILTER_PRODUCT_SUCCESS, GET_PRODUCT, GET_PRODUCT_SUCCESS, ProductUnionType, SEARCH_PRODUCT_SUCCESS } from "../actions/product.actions";
+import { FILTER_PRODUCT, FILTER_PRODUCT_SUCCESS, GET_PRODUCT, GET_PRODUCT_BY_ID, GET_PRODUCT_BY_ID_SUCCESS, GET_PRODUCT_SUCCESS, ProductUnionType, SEARCH_PRODUCT_SUCCESS } from "../actions/product.actions";
 import { Product } from "../models/product";
 
 export interface ProductState {
@@ -20,6 +20,11 @@ export interface ProductState {
             size: number
             data: Product[]
         }
+    },
+    product: {
+        loaded: boolean
+        success: boolean
+        result: Product
     }
 }
 
@@ -41,6 +46,25 @@ const initialState: ProductState = {
         result: {
             size: 0,
             data: []
+        }
+    },
+    product: {
+        loaded: false,
+        success: false,
+        result: {
+            _id: "",
+            name: "",
+            price: 0,
+            description: "",
+            category: {
+                _id: "",
+                name: ""
+            },
+            quantity: 0,
+            sold: 0,
+            photo: new FormData(),
+            shipping: false,
+            createdAt: ""
         }
     }
 }
@@ -93,6 +117,24 @@ export default function productReducer(state = initialState, action: ProductUnio
                         size: action.payload.size,
                         data
                     }
+                }
+            }
+        case GET_PRODUCT_BY_ID:
+            return {
+                ...state,
+                product: {
+                    ...state.product,
+                    loaded: false,
+                    success: false
+                }
+            }
+        case GET_PRODUCT_BY_ID_SUCCESS:
+            return {
+                ...state,
+                product: {
+                    loaded: false,
+                    success: false,
+                    result: action.payload
                 }
             }
         default:
