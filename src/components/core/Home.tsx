@@ -15,8 +15,6 @@ const Home = () => {
 
     const { createdAt, sold } = useSelector<AppState, ProductState>(state => state.product)
 
-    console.log("createdAt:----------", createdAt)
-
     useEffect(() => {
         dispatch(getProduct("createdAt"))
         dispatch(getProduct("sold"))

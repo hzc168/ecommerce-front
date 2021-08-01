@@ -16,8 +16,6 @@ const Shop = () => {
 
     const product = useSelector<AppState, ProductState>(state => state.product)
 
-    console.log("获取到的过滤的结果：", product)
-
     const [myFilters, setMyFilters] = useState<{ category: string[], price: number[] }>({ category: [], price: [] })
 
     useEffect(() => {

@@ -6,6 +6,7 @@ import AdminDashboard from './components/admin/AdminDashboard'
 import AdminPrivateRoute from './components/admin/AdminPrivateRoute'
 import Dashboard from './components/admin/Dashboard'
 import PrivateRoute from './components/admin/PrivateRoute'
+import Cart from './components/core/Cart'
 import Home from './components/core/Home'
 import Product from './components/core/Product'
 import Shop from './components/core/Shop'
@@ -20,6 +21,7 @@ const Routes = () => {
                 <Route path="/shop" component={Shop} />
                 <Route path="/signin" component={Signin} />
                 <Route path="/signup" component={Signup} />
+                <Route path="/cart" component={Cart} />
                 <PrivateRoute path="/user/dashboard" component={Dashboard} />
                 <AdminPrivateRoute path="/admin/dashboard" component={AdminDashboard} />
                 <AdminPrivateRoute path="/create/category" component={AddCategory} />
