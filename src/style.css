@@ -43,8 +43,15 @@
     }
 }
 
+.checkBoxFilter {
+    width: 100%;
+}
 .checkBoxFilter .ant-checkbox-group-item {
     display: block;
     padding: 15px 0;
     border-bottom: 1px solid #f0f0f0;
+}
+
+.checkBoxFilter .ant-checkbox-group-item .ant-checkbox {
+    display: inline-block;
 }

@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Layout from './Layout'
 import { Row, Col, Space } from 'antd'
 import Checkbox from './Checkbox'
 import RadioBox from './RadioBox'
+import { filterProduct } from '../../store/actions/product.actions'
 
 const Shop = () => {
     const state = useSelector(state => state)
 
+    const dispatch = useDispatch()
+
     const [myFilters, setMyFilters] = useState<{ category: string[], price: number[] }>({ category: [], price: [] })
 
     useEffect(() => {
-        console.log(myFilters)
+        dispatch(filterProduct({filter: myFilters, skip: 0}))
     }, [myFilters])
 
     const filterDOM = () => (

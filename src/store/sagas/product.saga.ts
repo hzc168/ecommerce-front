@@ -1,5 +1,5 @@
 import { takeEvery, put } from "redux-saga/effects";
-import { GetProductAction, getProductSuccess, GET_PRODUCT, SearchProductAction, searchProductSuccess, SEARCH_PRODUCT } from "../actions/product.actions";
+import { FilterProductAction, filterProductSuccess, FILTER_PRODUCT, GetProductAction, getProductSuccess, GET_PRODUCT, SearchProductAction, searchProductSuccess, SEARCH_PRODUCT } from "../actions/product.actions";
 import axios from 'axios'
 import { API } from "../../config";
 import { isAuth } from "../../helpers/auth";
@@ -25,7 +25,14 @@ function* handleSearchProduct({payload: {search, category}}: SearchProductAction
     yield put(searchProductSuccess(response.data))
 }
 
+function* handleFilterProduct (action: FilterProductAction): any {
+    let response = yield axios.post(`${API}/products/filter`, action.payload)
+    yield put(filterProductSuccess(response.data, action.payload.skip))
+}
+
+
 export default function* productSaga() {
     yield takeEvery(GET_PRODUCT, handleGetPorduct)
     yield takeEvery(SEARCH_PRODUCT, handleSearchProduct)
+    yield takeEvery(FILTER_PRODUCT, handleFilterProduct)
 }
