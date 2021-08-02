@@ -1,4 +1,4 @@
-import { CategoryUnionType, GET_CATEGORY, GET_CATEGORY_SUCCESS } from "../actions/category.actions";
+import { CategoryUnionType, GET_CATEGORY, GET_CATEGORY_SUCCESS } from "../actions/category.action";
 import { Category } from '../models/category'
 
 export interface CategoryState {

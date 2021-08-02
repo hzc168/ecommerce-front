@@ -1,4 +1,4 @@
-import { FILTER_PRODUCT, FILTER_PRODUCT_SUCCESS, GET_PRODUCT, GET_PRODUCT_BY_ID, GET_PRODUCT_BY_ID_SUCCESS, GET_PRODUCT_SUCCESS, ProductUnionType, SEARCH_PRODUCT_SUCCESS } from "../actions/product.actions";
+import { FILTER_PRODUCT, FILTER_PRODUCT_SUCCESS, GET_PRODUCT, GET_PRODUCT_BY_ID, GET_PRODUCT_BY_ID_SUCCESS, GET_PRODUCT_SUCCESS, ProductUnionType, SEARCH_PRODUCT_SUCCESS } from "../actions/product.action";
 import { Product } from "../models/product";
 
 export interface ProductState {

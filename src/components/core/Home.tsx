@@ -4,7 +4,7 @@ import Search from './Search'
 import { Col, Row, Typography } from 'antd'
 import ProductItem from './ProductItem'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProduct } from '../../store/actions/product.actions'
+import { getProduct } from '../../store/actions/product.action'
 import { AppState } from '../../store/reducers'
 import { ProductState } from '../../store/reducers/product.reducer'
 

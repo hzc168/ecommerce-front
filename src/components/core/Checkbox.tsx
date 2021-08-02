@@ -1,7 +1,7 @@
 import React, { useEffect, FC } from 'react'
 import { Typography, Checkbox as AntdCheckbox } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCategory } from '../../store/actions/category.actions'
+import { getCategory } from '../../store/actions/category.action'
 import { AppState } from '../../store/reducers'
 import { CategoryState } from '../../store/reducers/category.reducer'
 import { CheckboxValueType } from 'antd/lib/checkbox/Group'

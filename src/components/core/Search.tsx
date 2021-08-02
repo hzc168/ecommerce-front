@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { Form, Select, Input, Button, Divider, Row, Col, } from 'antd'
 import ProductItem from './ProductItem'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCategory } from '../../store/actions/category.actions'
+import { getCategory } from '../../store/actions/category.action'
 import { AppState } from '../../store/reducers'
 import { CategoryState } from '../../store/reducers/category.reducer'
-import { searchProduct } from '../../store/actions/product.actions'
+import { searchProduct } from '../../store/actions/product.action'
 import { ProductState } from '../../store/reducers/product.reducer'
 
 const Search = () => {

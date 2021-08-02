@@ -1,4 +1,4 @@
-import { getCategorySuccess, GET_CATEGORY } from "../actions/category.actions";
+import { getCategorySuccess, GET_CATEGORY } from "../actions/category.action";
 import { takeEvery, put } from "redux-saga/effects";
 import axios from 'axios'
 import { API } from "../../config";

@@ -1,11 +1,11 @@
 import { takeEvery, put } from "redux-saga/effects";
-import { FilterProductAction, filterProductSuccess, FILTER_PRODUCT, GetProductAction, GetProductByIdAction, getProductByIdSuccess, getProductSuccess, GET_PRODUCT, GET_PRODUCT_BY_ID, SearchProductAction, searchProductSuccess, SEARCH_PRODUCT } from "../actions/product.actions";
+import { FilterProductAction, filterProductSuccess, FILTER_PRODUCT, GetProductAction, GetProductByIdAction, getProductByIdSuccess, getProductSuccess, GET_PRODUCT, GET_PRODUCT_BY_ID, SearchProductAction, searchProductSuccess, SEARCH_PRODUCT } from "../actions/product.action";
 import axios from 'axios'
 import { API } from "../../config";
 import { isAuth } from "../../helpers/auth";
 import { Jwt } from "../models/auth";
 
-function* handleGetPorduct({ sortBy, order, limit }: GetProductAction): any {
+function* handleGetProduct({ sortBy, order, limit }: GetProductAction): any {
     const { token } = isAuth() as Jwt
     let response = yield axios.get(`${API}/products`, {
         params: { sortBy, order, limit },
@@ -30,7 +30,7 @@ function* handleFilterProduct(action: FilterProductAction): any {
     yield put(filterProductSuccess(response.data, action.payload.skip))
 }
 
-function* handleGetPorductById({ payload }: GetProductByIdAction): any {
+function* handleGetProductById({ payload }: GetProductByIdAction): any {
     const { token } = isAuth() as Jwt
     let response = yield axios.get(`${API}/reset/products/${payload.productId}`, {
         headers: {
@@ -41,8 +41,8 @@ function* handleGetPorductById({ payload }: GetProductByIdAction): any {
 }
 
 export default function* productSaga() {
-    yield takeEvery(GET_PRODUCT, handleGetPorduct)
+    yield takeEvery(GET_PRODUCT, handleGetProduct)
     yield takeEvery(SEARCH_PRODUCT, handleSearchProduct)
     yield takeEvery(FILTER_PRODUCT, handleFilterProduct)
-    yield takeEvery(GET_PRODUCT_BY_ID, handleGetPorductById)
+    yield takeEvery(GET_PRODUCT_BY_ID, handleGetProductById)
 }
