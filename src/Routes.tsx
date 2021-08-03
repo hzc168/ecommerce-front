@@ -12,6 +12,7 @@ import Product from './components/core/Product'
 import Shop from './components/core/Shop'
 import Signin from './components/core/Signin'
 import Signup from './components/core/Signup'
+import Success from './components/core/Success'
 
 const Routes = () => {
     return (
@@ -22,6 +23,7 @@ const Routes = () => {
                 <Route path="/signin" component={Signin} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/cart" component={Cart} />
+                <Route path="/paysuccess" component={Success} />
                 <PrivateRoute path="/user/dashboard" component={Dashboard} />
                 <AdminPrivateRoute path="/admin/dashboard" component={AdminDashboard} />
                 <AdminPrivateRoute path="/create/category" component={AddCategory} />

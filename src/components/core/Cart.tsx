@@ -4,6 +4,7 @@ import Layout from './Layout'
 import { Row, Col, Input, Divider } from 'antd'
 import CartItemFc from './CartItemFc'
 import TotalPrice from './TotalPrice'
+import Pay from './Pay'
 
 const Cart = () => {
     const [cart, setCart] = useState<CartItem[]>([])
@@ -49,6 +50,9 @@ const Cart = () => {
                     <Divider />
                     <Row>
                         <TotalPrice cart={cart} setTotalPrice={setTotalPrice} />
+                    </Row>
+                    <Row>
+                        <Pay totalPrice={totalPrice} cart={cart} address={address} />
                     </Row>
                 </Col>
             </Row>
