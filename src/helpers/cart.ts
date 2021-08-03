@@ -81,3 +81,16 @@ export const deleteItem = (productId: string) => {
     localStorage.setItem('cart', JSON.stringify(cart))
     return cart
 }
+
+
+/**
+ * 获取商品数量
+ */
+export const itemCount = () => {
+    if (typeof window !== "undefined") {
+        if (localStorage.getItem('cart')) {
+            return JSON.parse(localStorage.getItem('cart')!).length
+        }
+    }
+    return 0
+}

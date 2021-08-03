@@ -1,11 +1,13 @@
-import { Menu } from 'antd'
-import React from 'react'
+import { Menu, Badge } from 'antd'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { AppState } from '../../store/reducers'
 import { RouterState } from 'connected-react-router'
 import { isAuth } from '../../helpers/auth'
 import { Jwt } from '../../store/models/auth'
+import { TotalContext } from '../../anotherStore'
+import { itemCount } from '../../helpers/cart'
 
 function useActive(currentPath: string, path: string): string {
     return currentPath === path ? "ant-menu-item-selected" : ""
@@ -18,16 +20,23 @@ const Navigation = () => {
     const isShop = useActive(pathname, '/shop')
     const isSignin = useActive(pathname, '/signin')
     const isSignup = useActive(pathname, '/signup')
+    const isCart = useActive(pathname, '/cart')
     const isDashboard = useActive(pathname, getDashboardUrl())
+
+    const [count, setCount] = useContext(TotalContext)
+
+    useEffect(() => {
+        setCount(itemCount())
+    })
 
     function getDashboardUrl(): string {
         let url = '/user/dashboard'
-        if(isAuth()) {
+        if (isAuth()) {
             const {
-                user: {role}
+                user: { role }
             } = isAuth() as Jwt
 
-            if(role === 1) {
+            if (role === 1) {
                 url = '/admin/dashboard'
             }
         }
@@ -41,6 +50,12 @@ const Navigation = () => {
             </Menu.Item>
             <Menu.Item className={isShop} key="shop">
                 <Link to="/shop">商城</Link>
+            </Menu.Item>
+            <Menu.Item className={isCart} key="cart">
+                <Link to="/cart">
+                    购物车
+                    <Badge count={count} offset={[5, -10]} />
+                </Link>
             </Menu.Item>
             {
                 !isAuth() && (

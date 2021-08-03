@@ -7,11 +7,14 @@ import store from './store';
 import { history } from './store'
 import 'antd/dist/antd.css'
 import './style.css'
+import AnotherStore from './anotherStore';
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Routes />
+      <AnotherStore>
+        <Routes />
+      </AnotherStore>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
