@@ -13,6 +13,7 @@ import Shop from './components/core/Shop'
 import Signin from './components/core/Signin'
 import Signup from './components/core/Signup'
 import Success from './components/core/Success'
+import Orders from './components/core/Orders'
 
 const Routes = () => {
     return (
@@ -28,6 +29,7 @@ const Routes = () => {
                 <AdminPrivateRoute path="/admin/dashboard" component={AdminDashboard} />
                 <AdminPrivateRoute path="/create/category" component={AddCategory} />
                 <AdminPrivateRoute path="/create/product" component={AddProduct} />
+                <AdminPrivateRoute path="/admin/orders" component={Orders} />
                 <Route path="/product/:productId" component={Product} />
             </Switch>
         </HashRouter>
